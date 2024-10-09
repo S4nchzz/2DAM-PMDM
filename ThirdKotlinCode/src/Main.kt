@@ -1,3 +1,3 @@
 fun main() {
-    print("merge")
+    print("release")
 }
