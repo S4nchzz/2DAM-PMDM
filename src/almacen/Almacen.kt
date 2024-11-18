@@ -8,21 +8,20 @@ fun main () {
     val almacen = Almacen();
     almacen.agregarBebida(Agua(1, 1.5f, 50.0, "MarcaA", "Manantial"));
     almacen.agregarBebida(Agua(2, 1.5f, 1.0, "MarcaA", "Manantial"));
-    almacen.agregarBebida(Agua(3, 1.5f, 1.0, "MarcaA", "Manantial"));
-    println(almacen.calcularPrecio(1));
+
+    println(almacen.calcularPrecio(0));
     println(almacen.calcularPrecio("MarcaB"))
     println(almacen.mostrarBebida())
+    almacen.eliminarBebida(1)
     println(almacen.calcularPrecio())
 }
 
 class Almacen {
-    private val matrix: MutableList<MutableList<Bebida>>;
+    private val matrix: MutableList<MutableList<Bebida>> = mutableListOf();
 
-    constructor() {
-        this.matrix = mutableListOf();
-
+    init {
         for (i in 0..4) {
-            var row: MutableList<Bebida> = mutableListOf();
+            val row: MutableList<Bebida> = mutableListOf();
             matrix.add(matrix.size, row)
         }
     }
@@ -62,8 +61,10 @@ class Almacen {
 
     fun mostrarBebida() {
         matrix.forEach { col ->
+            println();
             for (element in col) {
-                println(element.toString());
+                print(element.id);
+                print("|")
             }
         }
     }
