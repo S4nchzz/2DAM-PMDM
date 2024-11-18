@@ -6,18 +6,13 @@ import almacen.bebidas.CocaCola
 
 fun main () {
     val almacen = Almacen();
-    almacen.agregarBebida(Agua(1, 1.5f, 1.0, "MarcaA", "Manantial"));
+    almacen.agregarBebida(Agua(1, 1.5f, 50.0, "MarcaA", "Manantial"));
     almacen.agregarBebida(Agua(2, 1.5f, 1.0, "MarcaA", "Manantial"));
     almacen.agregarBebida(Agua(3, 1.5f, 1.0, "MarcaA", "Manantial"));
-    almacen.agregarBebida(Agua(4, 1.5f, 1.0, "MarcaA", "Manantial"));
-    almacen.agregarBebida(Agua(5, 1.5f, 1.0, "MarcaA", "Manantial"));
-    almacen.agregarBebida(Agua(6, 1.5f, 1.0, "MarcaA", "Manantial"));
-    almacen.agregarBebida(Agua(7, 1.5f, 1.0, "MarcaA", "Manantial"));
-    almacen.agregarBebida(Agua(8, 1.5f, 1.0, "MarcaA", "Manantial"));
-    almacen.agregarBebida(Agua(9, 1.5f, 1.0, "MarcaA", "Manantial"));
-    almacen.agregarBebida(Agua(10, 1.5f, 1.0, "MarcaA", "Manantial"));
-    almacen.agregarBebida(Agua(11, 1.5f, 1.0, "MarcaA", "Manantial"));
-    print(almacen.calcularPrecio(0));
+    println(almacen.calcularPrecio(1));
+    println(almacen.calcularPrecio("MarcaB"))
+    println(almacen.mostrarBebida())
+    println(almacen.calcularPrecio())
 }
 
 class Almacen {
@@ -78,7 +73,7 @@ class Almacen {
 
         for (row in matrix) {
             for (element in row) {
-                if (element is CocaCola) {
+                if (element is CocaCola && element.descuento) {
                     val descuento: Double = element.precio * 0.1;
                     value += element.precio - descuento;
                 } else {
